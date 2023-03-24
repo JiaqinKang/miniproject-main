@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Add book to <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <body>
+    <center>
+      <h1>Welcome to <%=shopName%></h1>
+      <p><a href="about">About <%=shopName%></a></p>
+      <p><a href="search">Search a food</a></p>
+      <p><a href="addfood">Add a new food</a></p>
+      <p><a href="list">Food list</a></p>
+      <p><a href="usersOwnList">Personal list</a></p>
+      <p><a href="register">Register with us</a></p>
+      <p><a href="listusers"> List users</a></p>
+      <p><a href="login">Login</a></p>
+      <p><a href="logout">Logout</a></p>
+      <p><a href="deleteuser">Delete a user</a></p>
+      <p><a href="updateFood">Update food</a></p>
+      <p><a href="generateAPI">API ACCESS</a></p>
+      <p>Welcome to Jiaqin's Recipe Buddy Dynamic Web Application to assist you with food nutrient monitoring.</p>    
+    <form method="POST" action="/foodadded">
+        <p>Food name: <input id="name" type="text" name="name" value="" /></p>
+        <p>Value Per: <input id="typicalValuePer" type="text" name="typicalValuePer" value="100"/></p>
+        <p>Unit value: <select id="unitOfTheTypeValue" type="text" name="unitOfTheTypeValue">
+          <option value="g">g</option>
+          <option value="ml">ml</option>
+          <option value="kcal">kcal</option>
+        </select>
+        </p>
+        <p>Carbs: <input id="carbs" type="text" name="carbs" value="" /></p>
+        <p>Fat: <input id="fat" type="text" name="fat" value="" /></p>
+        <p>Protein: <input id="protein" type="text" name="protein" value="" /></p>
+        <p>Salt: <input id="salt" type="text" name="salt" value="" /></p>
+        <p>Sugar: <input id="sugar" type="text" name="sugar" value="" /></p>
+        <input type="submit" value="Add food" />
+      </form>
+    </center>
+  </body>
+</html>
+

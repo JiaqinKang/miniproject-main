@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th{
+      background-color: rgb(255, 172, 62);
+    }
+  </style>
+  <body>
+    <center>
+      <h1>Welcome to <%=shopName%></h1>
+      <p><a href="about">About <%=shopName%></a></p>
+      <p><a href="search">Search a food</a></p>
+      <p><a href="addfood">Add a new food</a></p>
+      <p><a href="list">Food list</a></p>
+      <p><a href="usersOwnList">Personal list</a></p>
+      <p><a href="register">Register with us</a></p>
+      <p><a href="listusers"> List users</a></p>
+      <p><a href="login">Login</a></p>
+      <p><a href="logout">Logout</a></p>
+      <p><a href="deleteuser">Delete a user</a></p>
+      <p><a href="updateFood">Update food</a></p>
+      <p><a href="generateAPI">API ACCESS</a></p>
+    <p>Welcome to Jiaqin's Recipe Buddy Dynamic Web Application to assist you with food nutrient monitoring.</p>
+    <form action="/updateFoodSearchResult" method="GET">
+      <p>What food do you look up?</p>
+      <input type="text" name="keyword" value="">
+      <input type="submit" value="Search" >
+    </form>
+
+    <h2>Here are the food lists: Edit one at a time</h2>
+    <table>
+      <tr>
+        <th>Food name</th>
+        <th>Value per</th>
+        <th>Unite</th>
+        <th>Carbs</th>
+        <th>Fat</th>
+        <th>Protein</th>
+        <th>Salt</th>
+        <th>Sugar</th>
+        <th colspan="2">Action</th>
+        
+      </tr>
+      <% availablefood.forEach(function(food) { %>
+        <!--create a object to hold the list of food-->
+          <tr>
+            <form method="post">
+              <input type="hidden" name="id" value="<%=food.id%>">
+              <td><input type="text" name="name" value="<%=food.name%>"></td>
+              <td><input type="text" name="typicalValuePer" value="<%=food.typicalValuePer%>"></td>
+              <td><select type="text" name="unitOfTheTypeValue" value="<%=food.unitOfTheTypeValue%>">
+                <option value="g">g</option>
+                <option value="ml">ml</option>
+                <option value="kcal">kcal</option>
+              </select></td>
+              <td><input type="text" name="carbs" value="<%=food.carbs%>"></td>
+              <td><input type="text" name="fat" value="<%=food.fat%>"></td>
+              <td><input type="text" name="protein" value="<%=food.protein%>"></td>
+              <td><input type="text" name="salt" value="<%=food.salt%>"></td>
+              <td><input type="text" name="sugar" value="<%=food.sugar%>"></td>
+              <input type="hidden" name="owner" value="<%=food.associatedUser%>">
+<!--              <td><input type="submit" value="Update" onclick="updateFood()" formaction="/foodupdated"></td> weird bug with goldsmiths server-->
+		<td><input type="submit" value="Update" onclick="updateFood()" formaction="/usr/228/foodupdated"></td>
+<!--<td><input type="submit" value="Delete" onclick="deleteFood()" formaction="/deletefood"></td> weird bug with goldsmith server-->
+              <td><input type="submit" value="Delete" onclick="deleteFood()" formaction="/usr/228/deletefood" formmethod="post"></td>
+            </form>
+          </tr>
+      <% }) %>
+      <td colspan="2">
+      <form action="/deleteAllFood" method="post">
+<!--<input type="submit" value="Delete all food" onclick="deleteAllFood()" formaction="/deleteAllFood" method="post"> local development, weird issue with the goldsmiths server--> 
+        <input type="submit" value="Delete all food" onclick="deleteAllFood()">
+      </form>
+      </td>
+    </table>
+
+
+
+    <script>
+      function updateFood() {
+        if (confirm("Are you sure to update the selected food?")== true) {
+        } else {//stop doing the update
+          event.preventDefault();
+        }
+      }
+      function deleteFood() {
+        if (confirm("Are you sure to delete the selected food?") == true) {
+        } else {//stop doing the delete
+          event.preventDefault();
+        }
+      }
+      function deleteAllFood() {
+        if (confirm("Are you sure to delete all the found food?") == true) {
+        } else {//stop doing the delete
+          event.preventDefault();
+        }
+      }
+      </script>
+  </center>
+    </body>
+</html>

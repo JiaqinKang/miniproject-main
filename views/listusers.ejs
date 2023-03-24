@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <body>
+    <center>
+      <h1>Welcome to <%=shopName%></h1>
+      <p><a href="about">About <%=shopName%></a></p>
+      <p><a href="search">Search a food</a></p>
+      <p><a href="addfood">Add a new food</a></p>
+      <p><a href="list">Food list</a></p>
+      <p><a href="usersOwnList">Personal list</a></p>
+      <p><a href="register">Register with us</a></p>
+      <p><a href="listusers"> List users</a></p>
+      <p><a href="login">Login</a></p>
+      <p><a href="logout">Logout</a></p>
+      <p><a href="deleteuser">Delete a user</a></p>
+      <p><a href="updateFood">Update food</a></p>
+      <p><a href="generateAPI">API ACCESS</a></p>
+      <p>Welcome to Jiaqin's Recipe Buddy Dynamic Web Application to assist you with food nutrient monitoring.</p>
+    <h2>Members lists:</h2>
+    <ol type = 1>
+      <% listUsers.forEach(function(user) { %>
+            <li>
+                <%= user.userName %> <br>
+      <% }) ;%>
+    </ol>
+    </center>
+    </body>
+</html>

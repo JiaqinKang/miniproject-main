@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+  </head>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th{
+      background-color: rgb(255, 172, 62);
+    }
+  </style>
+  <body>
+    <center>
+      <h1>Welcome to <%=shopName%></h1>
+      <p><a href="about">About <%=shopName%></a></p>
+      <p><a href="search">Search a food</a></p>
+      <p><a href="addfood">Add a new food</a></p>
+      <p><a href="list">Food list</a></p>
+      <p><a href="usersOwnList">Personal list</a></p>
+      <p><a href="register">Register with us</a></p>
+      <p><a href="listusers"> List users</a></p>
+      <p><a href="login">Login</a></p>
+      <p><a href="logout">Logout</a></p>
+      <p><a href="deleteuser">Delete a user</a></p>
+      <p><a href="updateFood">Update food</a></p>
+      <p><a href="generateAPI">API ACCESS</a></p>
+    <p>Welcome to Jiaqin's Recipe Buddy Dynamic Web Application to assist you with food nutrient monitoring.</p>
+    <h2>Here are the Summary result:</h2>
+    <table>
+      <tr>
+        <th>Food name</th>
+        <th>Carbs</th>
+        <th>Fat</th>
+        <th>Protein</th>
+        <th>Salt</th>
+        <th>Sugar</th>
+      </tr>
+      <% availablefood.forEach(function(food) { %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.carbs %></td>
+        <td><%= food.fat %></td>
+        <td><%= food.protein %></td>
+        <td><%= food.salt %></td>
+        <td><%= food.sugar %></td>
+      </tr>
+      <% }); %>
+    </table>
+  </center>
+    </body>
+</html>

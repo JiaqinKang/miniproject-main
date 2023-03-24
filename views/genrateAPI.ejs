@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to <%=shopName%></title>
+    <link rel="stylesheet"  type="text/css" href="main.css" />
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        text-align: left;
+      }
+
+      li {
+        list-style-type:square;
+      }
+      </style>
+  </head>
+  <body>
+    <center>
+      <h1>Welcome to <%=shopName%></h1>
+      <p><a href="about">About <%=shopName%></a></p>
+      <p><a href="search">Search a food</a></p>
+      <p><a href="addfood">Add a new food</a></p>
+      <p><a href="list">Food list</a></p>
+      <p><a href="usersOwnList">Personal list</a></p>
+      <p><a href="register">Register with us</a></p>
+      <p><a href="listusers"> List users</a></p>
+      <p><a href="login">Login</a></p>
+      <p><a href="logout">Logout</a></p>
+      <p><a href="deleteuser">Delete a user</a></p>
+      <p><a href="updateFood">Update food</a></p>
+      <p><a href="generateAPI">API ACCESS</a></p>
+      <p>Welcome to Jiaqin's Recipe Buddy Dynamic Web Application to assist you with food nutrient monitoring.</p>
+      <p>Note that for security reasons we do not show your token again once been generated.</p>
+      <p>Click to get new API access key: </p>
+      <form action="/generateAPIKey" method="post">
+        <input type="submit" value="Generate a new API Access Key">
+      </form>
+      <h1>API Documentation </h1>
+      <p> To use the API, you need to send a GET request with a defined API key. For example</p>
+      <ol><li> <h2>Get food list</h2></li> </ol>
+      <p>https://www.doc.gold.ac.uk/usr/228/api?token=tyfTPztiHb0OuXOw</p>
+      <p> The API will return a JSON object with the following format:</p>
+      <table>
+        <td>
+        <p> [<br>
+          {<br>
+              "id": 5,<br>
+              "name": "flour",<br>
+              "typicalValuePer": 100,<br>
+              "unitOfTheTypeValue": "g",<br>
+              "carbs": 81,<br>
+              "fat": 1.4,<br>
+              "protein": 9.1,<br>
+              "salt": 0.01,<br>
+              "sugar": 0.6,<br>
+              "associatedUser": "admin"<br>
+          },<br>
+          {<br>
+              "id": 11,<br>
+              "name": "123kf",<br>
+              "typicalValuePer": 100,<br>
+              "unitOfTheTypeValue": "g",<br>
+              "carbs": 1,<br>
+              "fat": 1,<br>
+              "protein": 1,<br>
+              "salt": 1,<br>
+              "sugar": 1,<br>
+              "associatedUser": "adsf9"<br>
+          }<br>
+          ]<br>
+        </p>
+        </td>
+  </table>
+  <ol><li><h2>Update a food</h2></li></ol>
+  <p>Arguments:<br>
+    update - the food name to be updated<br>
+    old - the attribute name to be updated<br>
+    new - the new value of the attribute<br>
+  </p>
+  <p>https://www.doc.gold.ac.uk/usr/228/api?token=tyfTPztiHb0OuXOw&update=22&old=name&new=1</p>
+  <p> The API will return a JSON object with the following format:</p>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "success": "Food updated" <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "error": "Food not found" <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "error": "You are not authorized to update this food"
+          <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <ol><li><h2>Remove a food</h2></li></ol>
+  <p>Arguments:<br>
+    remove - the food name to be deleted<br>
+  </p>
+  <p>https://www.doc.gold.ac.uk/usr/228/api?token=tyfTPztiHb0OuXOw&remove=foodname</p>
+  <p> The API will return a JSON object with the following format:</p>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "success": "Food deleted" <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "error": "Food not found" <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "error": "You are not authorized to delete this food"
+          <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <ol><li><h2>Search for a food</h2></li></ol>
+  <p>Arguments:<br>
+    search - the food name to be searched<br>
+  </p>
+  <p>https://www.doc.gold.ac.uk/usr/228/api?token=tyfTPztiHb0OuXOw&search=foodname</p>
+  <p> The API will return a JSON object with the following format:</p>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "id": 5,<br>
+          "name": "flour",<br>
+          "typicalValuePer": 100,<br>
+          "unitOfTheTypeValue": "g",<br>
+          "carbs": 81,<br>
+          "fat": 1.4,<br>
+          "protein": 9.1,<br>
+          "salt": 0.01,<br>
+          "sugar": 0.6,<br>
+          "associatedUser": "admin"<br>
+        }<br>
+        </p>
+    </td>
+  </table>
+  <table>
+    <td>
+      <p>
+        {<br>
+          "error": "Food not found" <br>
+        }<br>
+        </p>
+    </td>
+  </table>
+
+
+  <ol><li><h2>If server issues</h2></li></ol>
+  <p> The API will return a JSON object with a specific error message</p>
+    </center>
+    </body>
+</html>
